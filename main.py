@@ -31,24 +31,20 @@ def power(x, n):
 
 def factorial(x):
     """Compute factorial of x, where x > 0"""
-    fact_s = 1
-    i = x
-    while i >=1:
-        fact_s = multiply(fact_s, i)
-        i = i - 1
-    return fact_s
-
+    solution = 1
+    for num in range(x, 0, -1):
+        solution = multiply(solution, num)
+    return solution
 
 def fibonacci(n):
     """Compute the nth term of fibonacci sequence"""
     num1 = 1
     num2 = 0
     num3 = 1
-    for num in range(n):
-        if num >= 2:
-            num3 = num1 + num2
-            num1 = num2
-            num2 = num3
+    for num in range(2, n+1, 1):
+        num3 = num1 + num2
+        num1 = num2
+        num2 = num3
     return num2
 
 
