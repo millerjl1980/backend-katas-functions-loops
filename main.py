@@ -1,7 +1,10 @@
 #!/usr/bin/env python
+import argparse
+import sys
+
 """Implements math functions without using operators except for '+' and '-' """
 
-__author__ = "???"
+__author__ = "Justin Miller"
 
 
 def add(x, y):
@@ -32,7 +35,7 @@ def factorial(x):
     i = x
     while i >=1:
         fact_s = multiply(fact_s, i)
-        i -= 1
+        i = i - 1
     return fact_s
 
 
@@ -50,5 +53,20 @@ def fibonacci(n):
 
 
 if __name__ == '__main__':
-    # your code to call functions above
-    pass
+    parser = argparse.ArgumentParser(description= "Help")
+    parser.add_argument('-x', action='store', type=int, help='Number for X')
+    parser.add_argument('-y', action='store', type=int, help='Number for Y')
+    parser.add_argument('-n', action='store', type=int, help='Number for N')
+    parser.add_argument('-func', action='store', type=str, help='What type of operation: add, mult, pow, fact, fib')
+    args = parser.parse_args()
+
+    if args.func == 'add':
+        print(add(args.x, args.y))
+    elif args.func == 'mult':
+        print(multiply(args.x, args.y))
+    elif args.func == 'pow':
+        print(power(args.x, args.n))
+    elif args.func == 'fact':
+        print(factorial(args.x))
+    elif args.func == "fib":
+        print(fibonacci(args.n))
